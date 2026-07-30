@@ -1,1 +1,148 @@
-<!DOCTYPE html><html><body><h1>The Belvane Co</h1><p><a href='products.html'>Explore Courses</a></p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Belvane Co</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#0b1020;
+    color:white;
+}
+
+header{
+    background:#111827;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 60px;
+}
+
+header h2{
+    color:#3b82f6;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.hero{
+    text-align:center;
+    padding:100px 20px;
+    background:linear-gradient(135deg,#1e3a8a,#6d28d9);
+}
+
+.hero h1{
+    font-size:55px;
+}
+
+.hero p{
+    margin:20px 0;
+    font-size:20px;
+    color:#ddd;
+}
+
+.btn{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:14px 30px;
+    border-radius:8px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#1d4ed8;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:50px;
+}
+
+.card{
+    background:#1f2937;
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+footer{
+    background:#111827;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>The Belvane Co</h2>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="products.html">Courses</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Master AI Skills</h1>
+
+<p>Premium AI Courses for Students, Creators & Entrepreneurs</p>
+
+<a href="products.html" class="btn">Explore Courses</a>
+
+</section>
+
+<section class="features">
+
+<div class="card">
+<h3>🤖 AI Courses</h3>
+<p>Learn ChatGPT, Automation & Prompt Engineering.</p>
+</div>
+
+<div class="card">
+<h3>🎓 Certificate</h3>
+<p>Receive a certificate after completing every course.</p>
+</div>
+
+<div class="card">
+<h3>♾ Lifetime Access</h3>
+<p>Learn anytime with unlimited access.</p>
+</div>
+
+</section>
+
+<footer>
+
+<h3>The Belvane Co</h3>
+
+<p>Helping You Learn AI Faster 🚀</p>
+
+</footer>
+
+</body>
+</html>
