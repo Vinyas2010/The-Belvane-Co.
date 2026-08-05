@@ -1,0 +1,9 @@
+{
+"name":"The Belvane Co.",
+"short_name":"Belvane AI",
+"description":"Learn AI skills with premium courses.",
+"start_url":"/",
+"display":"standalone",
+"background_color":"#050505",
+"theme_color":"#000000"
+}
