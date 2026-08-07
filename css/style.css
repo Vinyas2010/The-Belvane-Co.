@@ -78,17 +78,21 @@ transform:translateY(80px) scale(1.15);
 /* Header */
 
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:25px 8%;
+
 position:fixed;
-width:100%;
 top:0;
-background:rgba(0,0,0,.35);
+left:0;
+width:100%;
+z-index:9999;
+
+background:rgba(10,10,20,.55);
+
 backdrop-filter:blur(18px);
-border-bottom:1px solid rgba(255,255,255,.06);
-z-index:100;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+transition:.4s;
+
 }
 
 .logo{
@@ -938,7 +942,154 @@ transition:.3s;
 }
 
 .whatsapp:hover{
+/* ==========================
+   PREMIUM AI BACKGROUND
+========================== */
+
+body {
+    background: linear-gradient(-45deg,
+        #050816,
+        #0B1026,
+        #111827,
+        #0A0F1F);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+@keyframes gradientMove {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}   
+   
 
 transform:scale(1.1);
+
+}
+.btn-primary{
+
+box-shadow:
+0 0 30px rgba(74,144,226,.35);
+
+transition:.35s;
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-4px);
+
+box-shadow:
+
+0 0 45px rgba(74,144,226,.75);
+
+}
+section{
+
+opacity:0;
+
+transform:translateY(70px);
+
+transition:.8s;
+
+}
+
+section.visible{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+footer{
+
+background:#050816;
+
+border-top:1px solid rgba(255,255,255,.08);
+
+padding:70px 0;
+
+text-align:center;
+
+}
+.floating-cta{
+
+position:fixed;
+
+left:50%;
+
+bottom:20px;
+
+transform:translateX(-50%);
+
+background:#2563eb;
+
+padding:16px 28px;
+
+border-radius:40px;
+
+z-index:999;
+
+animation:pulse 2s infinite;
+
+}
+
+.floating-cta a{
+
+color:white;
+
+text-decoration:none;
+
+font-weight:700;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:translateX(-50%) scale(1);
+
+}
+
+50%{
+
+transform:translateX(-50%) scale(1.05);
+
+}
+
+100%{
+
+transform:translateX(-50%) scale(1);
+
+}
+
+}
+.page-loader{
+
+position:fixed;
+
+top:0;
+left:0;
+
+height:4px;
+
+width:0;
+
+background:#3b82f6;
+
+z-index:99999;
+
+transition:width .3s;
 
 }
