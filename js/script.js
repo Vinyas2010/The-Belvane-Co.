@@ -636,45 +636,79 @@ if (googleLogin) {
 
 window.firebaseAuth.onAuthStateChanged(window.auth, (user)=>{
 
-const loginBtn=document.getElementById("loginBtn");
-const dropdown=document.getElementById("profileDropdown");
+    const loginBtn = document.getElementById("loginBtn");
+    const dropdown = document.getElementById("profileDropdown");
 
-const userPhoto=document.getElementById("userPhoto");
-const userName=document.getElementById("userName");
-const userEmail=document.getElementById("userEmail");
+    const userPhoto = document.getElementById("userPhoto");
+    const userName = document.getElementById("userName");
+    const userEmail = document.getElementById("userEmail");
 
-const logoutBtn=document.getElementById("logoutBtn");
-
-
-if(user){
-
-    loginBtn.innerHTML="👤 "+(user.displayName || "Account");
+    const logoutBtn = document.getElementById("logoutBtn");
 
 
-    userPhoto.src=user.photoURL || "";
+    if(user){
 
-    userName.innerHTML=user.displayName || "User";
-
-    userEmail.innerHTML=user.email;
+        loginBtn.innerHTML = "👤 " + (user.displayName || "Account");
 
 
-    loginBtn.onclick=()=>{
+        userPhoto.src = user.photoURL || "";
 
-        dropdown.style.display =
-        dropdown.style.display==="block"
-        ? "none"
-        : "block";
+        userName.innerHTML = user.displayName || "User";
 
-    };
+        userEmail.innerHTML = user.email;
 
 
-    logoutBtn.onclick=async()=>{
+        // Open/close dropdown only
+        loginBtn.onclick = (e)=>{
 
-        await window.firebaseAuth.signOut(window.auth);
+            e.stopPropagation();
+
+            dropdown.style.display =
+            dropdown.style.display === "block"
+            ? "none"
+            : "block";
+
+        };
+
+
+        // Logout only when logout button is clicked
+        logoutBtn.onclick = async ()=>{
+
+            await window.firebaseAuth.signOut(window.auth);
+
+            dropdown.style.display = "none";
+
+        };
+
+
+    } else {
+
+
+        loginBtn.innerHTML = "Sign In";
+
+        loginBtn.onclick = ()=>{
+
+            loginModal.style.display = "flex";
+
+        };
+
+    }
+
+});
+
+
+// Close dropdown when clicking outside
+document.addEventListener("click",(e)=>{
+
+    const dropdown = document.getElementById("profileDropdown");
+
+    if(dropdown && !e.target.closest(".user-menu")){
 
         dropdown.style.display="none";
 
-    };
+    }
+
+});
 
 
 }else{
