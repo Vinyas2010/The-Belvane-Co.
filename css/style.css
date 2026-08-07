@@ -1198,3 +1198,88 @@ color:white;
     background: #1d4ed8;
     color: white;
 }
+/* ==========================
+   USER PROFILE DROPDOWN
+========================== */
+
+.user-menu{
+    position:relative;
+}
+
+
+.profile-dropdown{
+
+    display:none;
+
+    position:absolute;
+
+    right:0;
+    top:55px;
+
+    width:260px;
+
+    padding:20px;
+
+    background:#111827;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:18px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+
+}
+
+
+.profile-dropdown img{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+}
+
+
+.profile-dropdown h4{
+
+    color:white;
+    margin:10px 0 5px;
+
+}
+
+
+.profile-dropdown p{
+
+    color:#aaa;
+    font-size:14px;
+
+}
+
+
+.profile-dropdown button{
+
+    width:100%;
+
+    margin-top:10px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+
+.profile-dropdown button:hover{
+
+    background:#2563eb;
+
+}
