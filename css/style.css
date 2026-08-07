@@ -651,3 +651,93 @@ display:flex;
 transition:.3s;
 
 }
+/* ==========================
+   3D COURSE CARDS
+========================== */
+
+.course-card{
+
+transition:
+transform .35s ease,
+box-shadow .35s ease;
+
+transform-style:preserve-3d;
+
+}
+
+.course-card:hover{
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.45);
+
+}
+.hero{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:500px;
+
+height:500px;
+
+left:calc(var(--x) - 250px);
+
+top:calc(var(--y) - 250px);
+
+background:
+
+radial-gradient(circle,
+
+rgba(255,255,255,.12),
+
+transparent 70%);
+
+pointer-events:none;
+
+transition:.15s;
+
+}
+.ai-icons{
+
+position:absolute;
+
+right:60px;
+
+top:120px;
+
+display:flex;
+
+flex-direction:column;
+
+gap:35px;
+
+font-size:34px;
+
+animation:floatIcons 5s ease infinite;
+
+}
+
+@keyframes floatIcons{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-20px);
+
+}
+
+}
