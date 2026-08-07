@@ -78,21 +78,25 @@ transform:translateY(80px) scale(1.15);
 /* Header */
 
 header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
 
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-background:rgba(10,10,20,.55);
+    padding: 18px 6%;
 
-backdrop-filter:blur(18px);
+    background: rgba(10,10,20,.55);
+    backdrop-filter: blur(18px);
 
-border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255,255,255,.08);
 
-transition:.4s;
-
+    transition: .4s;
+    box-sizing: border-box;
 }
 
 .logo{
@@ -102,10 +106,13 @@ letter-spacing:.5px;
 }
 
 nav{
-display:flex;
-gap:35px;
+    display: flex;
+    align-items: center;
+    gap: 35px;
 }
-
+.menu-toggle{
+    display: none;
+}
 nav a{
 text-decoration:none;
 color:#ddd;
@@ -130,7 +137,11 @@ transition:.3s;
 background:white;
 color:black;
 }
-
+.nav-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
 /* Hero */
 
 .hero{
