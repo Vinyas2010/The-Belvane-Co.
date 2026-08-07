@@ -435,6 +435,7 @@ if(dot){
 
 dot.style.left=e.clientX+"px";
 dot.style.top=e.clientY+"px";
+}
 // ===========================
 // MOBILE MENU
 // ===========================
@@ -614,6 +615,8 @@ if (loginBtn && loginModal && closeModal) {
         }
 
     });
+
+}
 
 
 
