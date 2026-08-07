@@ -634,25 +634,65 @@ if (googleLogin) {
 // USER LOGIN STATE
 // ===========================
 
-window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
+window.firebaseAuth.onAuthStateChanged(window.auth, (user)=>{
 
-    const loginBtn = document.getElementById("loginBtn");
+const loginBtn=document.getElementById("loginBtn");
+const dropdown=document.getElementById("profileDropdown");
 
-    if (user) {
+const userPhoto=document.getElementById("userPhoto");
+const userName=document.getElementById("userName");
+const userEmail=document.getElementById("userEmail");
 
-        // User is logged in
-        loginBtn.innerHTML = `
-            👤 ${user.displayName || "Account"}
-        `;
+const logoutBtn=document.getElementById("logoutBtn");
 
-        loginBtn.onclick = () => {
-            const logout = confirm("Do you want to logout?");
 
-            if (logout) {
-                window.firebaseAuth.signOut(window.auth);
-            }
-        };
+if(user){
 
+    loginBtn.innerHTML="👤 "+(user.displayName || "Account");
+
+
+    userPhoto.src=user.photoURL || "";
+
+    userName.innerHTML=user.displayName || "User";
+
+    userEmail.innerHTML=user.email;
+
+
+    loginBtn.onclick=()=>{
+
+        dropdown.style.display =
+        dropdown.style.display==="block"
+        ? "none"
+        : "block";
+
+    };
+
+
+    logoutBtn.onclick=async()=>{
+
+        await window.firebaseAuth.signOut(window.auth);
+
+        dropdown.style.display="none";
+
+    };
+
+
+}else{
+
+
+    loginBtn.innerHTML="Sign In";
+
+
+    loginBtn.onclick=()=>{
+
+        loginModal.style.display="flex";
+
+    };
+
+
+}
+
+});
     } else {
 
         // User is logged out
