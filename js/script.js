@@ -422,20 +422,32 @@ console.log(
 const ring=document.querySelector(".cursor-ring");
 const dot=document.querySelector(".cursor-dot");
 
-document.addEventListener("mousemove",(e)=>{
+// ===========================
+// CUSTOM CURSOR + MOBILE MENU
+// ===========================
 
-if(ring){
+const ring = document.querySelector(".cursor-ring");
+const dot = document.querySelector(".cursor-dot");
 
-ring.style.left=e.clientX+"px";
-ring.style.top=e.clientY+"px";
+document.addEventListener("mousemove", (e)=>{
 
-}
+    if(ring){
 
-if(dot){
+        ring.style.left = e.clientX + "px";
+        ring.style.top = e.clientY + "px";
 
-dot.style.left=e.clientX+"px";
-dot.style.top=e.clientY+"px";
-}
+    }
+
+    if(dot){
+
+        dot.style.left = e.clientX + "px";
+        dot.style.top = e.clientY + "px";
+
+    }
+
+});
+
+
 // ===========================
 // MOBILE MENU
 // ===========================
@@ -446,19 +458,16 @@ document.querySelector(".menu-toggle");
 const navLinks =
 document.querySelector(".nav-links");
 
+
 if(menuBtn && navLinks){
 
-menuBtn.onclick=()=>{
+    menuBtn.onclick = ()=>{
 
-navLinks.classList.toggle("active");
+        navLinks.classList.toggle("active");
 
-}
-
-}
+    };
 
 }
-
-});
 // ===========================
 // 3D COURSE CARD EFFECT
 // ===========================
