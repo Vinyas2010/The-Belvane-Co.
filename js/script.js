@@ -257,7 +257,8 @@ card.style.background="#101010";
 
 const topBtn=document.createElement("button");
 
-topBtn.innerHTML="↑";
+topBtn.innerHTML = "↑";
+topBtn.setAttribute("aria-label", "Back to top");
 
 topBtn.className="top-btn";
 
@@ -513,3 +514,18 @@ hero.style.setProperty(
 });
 
 }
+// ===========================
+// FAQ
+// ===========================
+
+document.querySelectorAll(".faq-question")
+
+.forEach(btn=>{
+
+btn.onclick=()=>{
+
+btn.parentElement.classList.toggle("active");
+
+};
+
+});
