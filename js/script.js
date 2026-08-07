@@ -655,6 +655,10 @@ if (googleLogin) {
 // USER LOGIN STATE
 // ===========================
 
+// ===========================
+// USER LOGIN STATE
+// ===========================
+
 window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
 
     const loginBtn = document.getElementById("loginBtn");
@@ -672,8 +676,6 @@ window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
 
     if (user) {
 
-        // Logged in user
-
         loginBtn.innerHTML = `👤 ${user.displayName || "Account"}`;
 
 
@@ -690,8 +692,6 @@ window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
         }
 
 
-        // Open profile dropdown
-
         loginBtn.onclick = (e) => {
 
             e.stopPropagation();
@@ -699,16 +699,14 @@ window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
             if (dropdown) {
 
                 dropdown.style.display =
-                    dropdown.style.display === "block"
-                    ? "none"
-                    : "block";
+                dropdown.style.display === "block"
+                ? "none"
+                : "block";
 
             }
 
         };
 
-
-        // Logout button
 
         if (logoutBtn) {
 
@@ -726,8 +724,6 @@ window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
 
 
     } else {
-
-        // Logged out user
 
         loginBtn.innerHTML = "Sign In";
 
