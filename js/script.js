@@ -433,6 +433,25 @@ if(dot){
 
 dot.style.left=e.clientX+"px";
 dot.style.top=e.clientY+"px";
+// ===========================
+// MOBILE MENU
+// ===========================
+
+const menuBtn =
+document.querySelector(".menu-toggle");
+
+const navLinks =
+document.querySelector(".nav-links");
+
+if(menuBtn && navLinks){
+
+menuBtn.onclick=()=>{
+
+navLinks.classList.toggle("active");
+
+}
+
+}
 
 }
 
