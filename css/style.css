@@ -590,6 +590,63 @@ transform:translateY(-8px);
 }
 
 }
+/* ==========================
+   MOBILE MENU
+========================== */
+
+.menu-toggle{
+
+display:none;
+
+background:none;
+
+border:none;
+
+color:white;
+
+font-size:32px;
+
+cursor:pointer;
+
+}
+
+@media(max-width:900px){
+
+.menu-toggle{
+
+display:block;
+
+}
+
+.nav-links{
+
+display:none;
+
+position:absolute;
+
+top:80px;
+
+left:0;
+
+width:100%;
+
+background:#0d1117;
+
+padding:30px;
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.nav-links.active{
+
+display:flex;
+
+}
+
+}
 
 transition:.3s;
 
