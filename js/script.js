@@ -529,3 +529,48 @@ btn.parentElement.classList.toggle("active");
 };
 
 });
+// ===========================
+// FADE IN SECTIONS
+// ===========================
+
+const revealSections =
+document.querySelectorAll("section");
+
+const revealObserver =
+new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("visible");
+
+}
+
+});
+
+},{threshold:.15});
+
+revealSections.forEach(section=>{
+
+revealObserver.observe(section);
+
+});
+const loader = document.querySelector(".page-loader");
+
+window.addEventListener("scroll",()=>{
+
+const total =
+document.documentElement.scrollHeight -
+window.innerHeight;
+
+const progress =
+(window.scrollY/total)*100;
+
+if(loader){
+
+loader.style.width = progress + "%";
+
+}
+
+});
