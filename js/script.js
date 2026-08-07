@@ -584,7 +584,7 @@ const loginModal = document.getElementById("loginModal");
 const closeModal = document.getElementById("closeModal");
 
 if (loginBtn && loginModal && closeModal) {
-    });
+    };
 
     closeModal.addEventListener("click", () => {
         loginModal.style.display = "none";
