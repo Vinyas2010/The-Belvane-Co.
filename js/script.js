@@ -665,3 +665,10 @@ window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
     }
 
 });
+console.log("Auth check started");
+
+window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
+
+    console.log("Current user:", user);
+
+});
