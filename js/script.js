@@ -616,7 +616,7 @@ if (googleLogin) {
 
             alert("Welcome " + result.user.displayName);
 
-            loginModal.style.display = "none";
+            
 
         } catch (error) {
 
