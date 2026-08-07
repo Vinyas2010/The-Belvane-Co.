@@ -630,3 +630,38 @@ if (googleLogin) {
     });
 
 }
+// ===========================
+// USER LOGIN STATE
+// ===========================
+
+window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
+
+    const loginBtn = document.getElementById("loginBtn");
+
+    if (user) {
+
+        // User is logged in
+        loginBtn.innerHTML = `
+            👤 ${user.displayName || "Account"}
+        `;
+
+        loginBtn.onclick = () => {
+            const logout = confirm("Do you want to logout?");
+
+            if (logout) {
+                window.firebaseAuth.signOut(window.auth);
+            }
+        };
+
+    } else {
+
+        // User is logged out
+        loginBtn.innerHTML = "Sign In";
+
+        loginBtn.onclick = () => {
+            loginModal.style.display = "flex";
+        };
+
+    }
+
+});
