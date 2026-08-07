@@ -634,7 +634,11 @@ if (googleLogin) {
 // USER LOGIN STATE
 // ===========================
 
-window.firebaseAuth.onAuthStateChanged(window.auth, (user)=>{
+// ===========================
+// USER LOGIN STATE
+// ===========================
+
+window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
 
     const loginBtn = document.getElementById("loginBtn");
     const dropdown = document.getElementById("profileDropdown");
@@ -646,49 +650,79 @@ window.firebaseAuth.onAuthStateChanged(window.auth, (user)=>{
     const logoutBtn = document.getElementById("logoutBtn");
 
 
-    if(user){
-
-        loginBtn.innerHTML = "👤 " + (user.displayName || "Account");
+    if (!loginBtn) return;
 
 
-        userPhoto.src = user.photoURL || "";
+    if (user) {
 
-        userName.innerHTML = user.displayName || "User";
+        // Logged in user
 
-        userEmail.innerHTML = user.email;
+        loginBtn.innerHTML = `👤 ${user.displayName || "Account"}`;
 
 
-        // Open/close dropdown only
-        loginBtn.onclick = (e)=>{
+        if (userPhoto) {
+            userPhoto.src = user.photoURL || "";
+        }
+
+        if (userName) {
+            userName.innerHTML = user.displayName || "User";
+        }
+
+        if (userEmail) {
+            userEmail.innerHTML = user.email;
+        }
+
+
+        // Open profile dropdown
+
+        loginBtn.onclick = (e) => {
 
             e.stopPropagation();
 
-            dropdown.style.display =
-            dropdown.style.display === "block"
-            ? "none"
-            : "block";
+            if (dropdown) {
+
+                dropdown.style.display =
+                    dropdown.style.display === "block"
+                    ? "none"
+                    : "block";
+
+            }
 
         };
 
 
-        // Logout only when logout button is clicked
-        logoutBtn.onclick = async ()=>{
+        // Logout button
 
-            await window.firebaseAuth.signOut(window.auth);
+        if (logoutBtn) {
 
-            dropdown.style.display = "none";
+            logoutBtn.onclick = async () => {
 
-        };
+                await window.firebaseAuth.signOut(window.auth);
+
+                if (dropdown) {
+                    dropdown.style.display = "none";
+                }
+
+            };
+
+        }
 
 
     } else {
 
+        // Logged out user
 
         loginBtn.innerHTML = "Sign In";
 
-        loginBtn.onclick = ()=>{
 
-            loginModal.style.display = "flex";
+        loginBtn.onclick = () => {
+
+            const loginModal =
+            document.getElementById("loginModal");
+
+            if (loginModal) {
+                loginModal.style.display = "flex";
+            }
 
         };
 
@@ -698,74 +732,16 @@ window.firebaseAuth.onAuthStateChanged(window.auth, (user)=>{
 
 
 // Close dropdown when clicking outside
-document.addEventListener("click",(e)=>{
 
-    const dropdown = document.getElementById("profileDropdown");
+document.addEventListener("click", (e) => {
 
-    if(dropdown && !e.target.closest(".user-menu")){
-
-        dropdown.style.display="none";
-
-    }
-
-});
+    const dropdown =
+    document.getElementById("profileDropdown");
 
 
-}else{
+    if (dropdown && !e.target.closest(".user-menu")) {
 
-
-    loginBtn.innerHTML="Sign In";
-
-
-    loginBtn.onclick=()=>{
-
-        loginModal.style.display="flex";
-
-    };
-
-
-}
-
-});
-    } else {
-
-        // User is logged out
-        loginBtn.innerHTML = "Sign In";
-
-        loginBtn.onclick = () => {
-            loginModal.style.display = "flex";
-        };
-
-    }
-
-});
-console.log("Auth check started");
-
-window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
-
-    const loginBtn = document.getElementById("loginBtn");
-
-    if (!loginBtn) return;
-
-    if (user) {
-
-        loginBtn.innerHTML = `👤 ${user.displayName || "Account"}`;
-
-        loginBtn.onclick = async () => {
-
-            await window.firebaseAuth.signOut(window.auth);
-
-            loginBtn.innerHTML = "Sign In";
-
-        };
-
-    } else {
-
-        loginBtn.innerHTML = "Sign In";
-
-        loginBtn.onclick = () => {
-            loginModal.style.display = "flex";
-        };
+        dropdown.style.display = "none";
 
     }
 
