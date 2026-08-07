@@ -1,166 +1,322 @@
-// =====================================
-// The Belvane Co.
-// Premium JavaScript
-// =====================================
+// ===========================
+// PRELOADER
+// ===========================
 
-// Navbar Background on Scroll
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    if (loader) {
+        loader.style.opacity = "0";
+
+        setTimeout(() => {
+            loader.style.display = "none";
+        }, 600);
+    }
+});
+
+// ===========================
+// SCROLL PROGRESS BAR
+// ===========================
+
+const progressBar = document.querySelector(".progress-bar");
+
+window.addEventListener("scroll", () => {
+
+    if (!progressBar) return;
+
+    const scroll =
+        document.documentElement.scrollTop;
+
+    const height =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+    progressBar.style.width =
+        (scroll / height) * 100 + "%";
+
+});
+
+// ===========================
+// HEADER SHADOW
+// ===========================
+
 const header = document.querySelector("header");
 
 window.addEventListener("scroll", () => {
+
+    if (!header) return;
+
     if (window.scrollY > 40) {
-        header.style.background = "rgba(0,0,0,.75)";
-        header.style.backdropFilter = "blur(25px)";
+
+        header.style.background =
+            "rgba(0,0,0,.85)";
+
+        header.style.backdropFilter =
+            "blur(20px)";
+
     } else {
-        header.style.background = "rgba(0,0,0,.35)";
-        header.style.backdropFilter = "blur(18px)";
-    }
-});
 
-// ==============================
-// Scroll Reveal Animation
-// ==============================
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
-    });
-}, {
-    threshold: 0.15
-});
-
-document.querySelectorAll(".course-card, .glass-card, .stats div").forEach(el => {
-    el.classList.add("hidden");
-    observer.observe(el);
-});
-
-// ==============================
-// Animated Counter
-// ==============================
-
-const counters = document.querySelectorAll(".stats h2");
-
-let started = false;
-
-window.addEventListener("scroll", () => {
-
-    if (started) return;
-
-    const stats = document.querySelector(".stats");
-
-    if (!stats) return;
-
-    if (stats.getBoundingClientRect().top < window.innerHeight) {
-
-        started = true;
-
-        counters.forEach(counter => {
-
-            const original = counter.innerText;
-
-            const target = parseInt(original);
-
-            if (isNaN(target)) return;
-
-            let current = 0;
-
-            const timer = setInterval(() => {
-
-                current += Math.ceil(target / 50);
-
-                if (current >= target) {
-                    counter.innerText = original;
-                    clearInterval(timer);
-                } else {
-                    counter.innerText = current + "+";
-                }
-
-            }, 25);
-
-        });
+        header.style.background =
+            "rgba(0,0,0,.55)";
 
     }
 
 });
 
-// ==============================
-// Mouse Glow Effect
-// ==============================
+// ===========================
+// CURSOR GLOW
+// ===========================
 
-const glow = document.createElement("div");
+const glow = document.querySelector(".cursor-glow");
 
-glow.className = "cursor-glow";
+document.addEventListener("mousemove", e => {
 
-document.body.appendChild(glow);
-
-window.addEventListener("mousemove", (e) => {
+    if (!glow) return;
 
     glow.style.left = e.clientX + "px";
+
     glow.style.top = e.clientY + "px";
 
 });
 
-// ==============================
-// Smooth Scrolling
-// ==============================
+// ===========================
+// SCROLL ANIMATION
+// ===========================
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+const hiddenElements =
+    document.querySelectorAll(".hidden");
 
-    anchor.addEventListener("click", function (e) {
+const observer = new IntersectionObserver(entries => {
 
-        const target = document.querySelector(this.getAttribute("href"));
+    entries.forEach(entry => {
 
-        if (!target) return;
+        if (entry.isIntersecting) {
 
-        e.preventDefault();
+            entry.target.classList.add("show");
 
-        target.scrollIntoView({
-            behavior: "smooth"
-        });
+        }
 
     });
 
-});
+}, {
 
-// ==============================
-// Scroll Progress Bar
-// ==============================
-
-const progressBar = document.createElement("div");
-
-progressBar.className = "progress-bar";
-
-document.body.appendChild(progressBar);
-
-window.addEventListener("scroll", () => {
-
-    const pageHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-    const progress =
-        (window.scrollY / pageHeight) * 100;
-
-    progressBar.style.width = progress + "%";
+    threshold: 0.15
 
 });
 
-// ==============================
-// Fade Hero on Scroll
-// ==============================
+hiddenElements.forEach(el => {
 
-const hero = document.querySelector(".hero");
-
-window.addEventListener("scroll", () => {
-
-    if (!hero) return;
-
-    hero.style.opacity = 1 - window.scrollY / 800;
+    observer.observe(el);
 
 });
 
-// ==============================
-// Console Message
-// ==============================
+// ===========================
+// COUNTER ANIMATION
+// ===========================
 
-console.log("🚀 The Belvane Co. Website Loaded Successfully");
+const counters =
+    document.querySelectorAll(".counter");
+
+const counterObserver =
+new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if (!entry.isIntersecting) return;
+
+const counter = entry.target;
+
+const target =
+Number(counter.dataset.target);
+
+let current = 0;
+
+const increment = target / 120;
+
+const update = () => {
+
+current += increment;
+
+if (current < target) {
+
+counter.innerText =
+Math.floor(current);
+
+requestAnimationFrame(update);
+
+}
+
+else {
+
+counter.innerText = target;
+
+}
+
+};
+
+update();
+
+counterObserver.unobserve(counter);
+
+});
+
+});
+
+counters.forEach(counter => {
+
+counterObserver.observe(counter);
+
+});
+
+// ===========================
+// SMOOTH SCROLL
+// ===========================
+
+document.querySelectorAll('a[href^="#"]')
+.forEach(anchor => {
+
+anchor.addEventListener("click", function(e){
+
+e.preventDefault();
+
+const target =
+document.querySelector(
+this.getAttribute("href")
+);
+
+if(target){
+
+target.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+});
+
+});
+
+// ===========================
+// BUTTON RIPPLE
+// ===========================
+
+document.querySelectorAll(".btn-primary,.btn-secondary,.btn-card,.btn-nav")
+
+.forEach(button=>{
+
+button.addEventListener("mouseenter",()=>{
+
+button.style.transform="translateY(-4px)";
+
+});
+
+button.addEventListener("mouseleave",()=>{
+
+button.style.transform="translateY(0px)";
+
+});
+
+});
+
+// ===========================
+// COURSE CARD EFFECT
+// ===========================
+
+document.querySelectorAll(".course-card")
+
+.forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+
+const y=e.clientY-rect.top;
+
+card.style.background=
+`radial-gradient(circle at ${x}px ${y}px,
+rgba(255,255,255,.12),
+#101010 55%)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.background="#101010";
+
+});
+
+});
+
+// ===========================
+// BACK TO TOP
+// ===========================
+
+const topBtn=document.createElement("button");
+
+topBtn.innerHTML="↑";
+
+topBtn.className="top-btn";
+
+document.body.appendChild(topBtn);
+
+topBtn.style.cssText=`
+
+position:fixed;
+bottom:25px;
+right:25px;
+width:52px;
+height:52px;
+border:none;
+border-radius:50%;
+background:white;
+color:black;
+font-size:22px;
+font-weight:bold;
+cursor:pointer;
+display:none;
+z-index:9999;
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+transition:.3s;
+
+`;
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topBtn.style.display="block";
+
+}
+
+else{
+
+topBtn.style.display="none";
+
+}
+
+});
+
+topBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+};
+
+// ===========================
+// CONSOLE MESSAGE
+// ===========================
+
+console.log(
+"%cWelcome to The Belvane Co 🚀",
+"font-size:18px;color:#fff;background:#000;padding:10px;border-radius:8px;"
+);
