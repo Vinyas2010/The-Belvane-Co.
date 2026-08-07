@@ -600,3 +600,33 @@ if (loginBtn && loginModal && closeModal) {
     });
 
 }
+// ===========================
+// GOOGLE LOGIN
+// ===========================
+
+const googleLogin = document.getElementById("googleLogin");
+
+if (googleLogin) {
+
+    googleLogin.addEventListener("click", async () => {
+
+        try {
+
+            const result = await window.firebaseAuth.signInWithPopup(
+                window.auth,
+                window.googleProvider
+            );
+
+            alert("Welcome " + result.user.displayName);
+
+            loginModal.style.display = "none";
+
+        } catch (error) {
+
+            alert(error.message);
+
+        }
+
+    });
+
+}
