@@ -669,6 +669,30 @@ console.log("Auth check started");
 
 window.firebaseAuth.onAuthStateChanged(window.auth, (user) => {
 
-    console.log("Current user:", user);
+    const loginBtn = document.getElementById("loginBtn");
+
+    if (!loginBtn) return;
+
+    if (user) {
+
+        loginBtn.innerHTML = `👤 ${user.displayName || "Account"}`;
+
+        loginBtn.onclick = async () => {
+
+            await window.firebaseAuth.signOut(window.auth);
+
+            loginBtn.innerHTML = "Sign In";
+
+        };
+
+    } else {
+
+        loginBtn.innerHTML = "Sign In";
+
+        loginBtn.onclick = () => {
+            loginModal.style.display = "flex";
+        };
+
+    }
 
 });
