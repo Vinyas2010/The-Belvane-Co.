@@ -616,7 +616,7 @@ if (loginBtn && loginModal && closeModal) {
     });
 
 
-}
+
 // ===========================
 // GOOGLE LOGIN
 // ===========================
