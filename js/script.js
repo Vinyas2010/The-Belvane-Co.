@@ -315,8 +315,125 @@ behavior:"smooth"
 // ===========================
 // CONSOLE MESSAGE
 // ===========================
+// ===========================
+// AI TYPING EFFECT
+// ===========================
 
+const typingElement = document.querySelector(".typing");
+
+if (typingElement) {
+
+const words = [
+"ChatGPT.",
+"Artificial Intelligence.",
+"Automation.",
+"Prompt Engineering.",
+"AI Tools."
+];
+
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect(){
+
+const currentWord = words[wordIndex];
+
+if(!deleting){
+
+typingElement.textContent =
+currentWord.substring(0,charIndex++);
+
+if(charIndex>currentWord.length){
+
+deleting=true;
+
+setTimeout(typeEffect,1500);
+
+return;
+
+}
+
+}else{
+
+typingElement.textContent =
+currentWord.substring(0,charIndex--);
+
+if(charIndex<0){
+
+deleting=false;
+
+wordIndex++;
+
+if(wordIndex>=words.length){
+
+wordIndex=0;
+
+}
+
+}
+
+}
+
+setTimeout(typeEffect,
+deleting?45:90);
+
+}
+
+typeEffect();
+
+}
+// ===========================
+// PARTICLES
+// ===========================
+
+const particles =
+document.querySelector(".particles");
+
+if(particles){
+
+for(let i=0;i<80;i++){
+
+const p=document.createElement("span");
+
+p.style.left=Math.random()*100+"%";
+
+p.style.animationDuration=
+5+Math.random()*10+"s";
+
+p.style.animationDelay=
+Math.random()*5+"s";
+
+particles.appendChild(p);
+
+}
+
+}
 console.log(
 "%cWelcome to The Belvane Co 🚀",
 "font-size:18px;color:#fff;background:#000;padding:10px;border-radius:8px;"
 );
+// ===========================
+// CUSTOM CURSOR
+// ===========================
+
+const ring=document.querySelector(".cursor-ring");
+const dot=document.querySelector(".cursor-dot");
+
+document.addEventListener("mousemove",(e)=>{
+
+if(ring){
+
+ring.style.left=e.clientX+"px";
+ring.style.top=e.clientY+"px";
+
+}
+
+if(dot){
+
+dot.style.left=e.clientX+"px";
+dot.style.top=e.clientY+"px";
+
+}
+
+});
