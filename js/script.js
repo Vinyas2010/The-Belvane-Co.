@@ -419,8 +419,6 @@ console.log(
 // CUSTOM CURSOR
 // ===========================
 
-const ring=document.querySelector(".cursor-ring");
-const dot=document.querySelector(".cursor-dot");
 
 // ===========================
 // CUSTOM CURSOR + MOBILE MENU
