@@ -456,3 +456,60 @@ navLinks.classList.toggle("active");
 }
 
 });
+// ===========================
+// 3D COURSE CARD EFFECT
+// ===========================
+
+document.querySelectorAll(".course-card").forEach(card => {
+
+    card.addEventListener("mousemove", (e) => {
+
+        const rect = card.getBoundingClientRect();
+
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const rotateY = ((x / rect.width) - 0.5) * 20;
+        const rotateX = ((y / rect.height) - 0.5) * -20;
+
+        card.style.transform =
+            `perspective(1000px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             scale(1.03)`;
+
+    });
+
+    card.addEventListener("mouseleave", () => {
+
+        card.style.transform =
+            "perspective(1000px) rotateX(0) rotateY(0) scale(1)";
+
+    });
+
+});
+// ===========================
+// HERO GLOW
+// ===========================
+
+const hero = document.querySelector(".hero");
+
+if(hero){
+
+hero.addEventListener("mousemove",(e)=>{
+
+const rect=hero.getBoundingClientRect();
+
+hero.style.setProperty(
+"--x",
+(e.clientX-rect.left)+"px"
+);
+
+hero.style.setProperty(
+"--y",
+(e.clientY-rect.top)+"px"
+);
+
+});
+
+}
