@@ -1177,3 +1177,24 @@ cursor:pointer;
 color:white;
 
 }
+.btn-signin{
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255,255,255,.3);
+}
+
+.btn-signin:hover{
+    background: rgba(255,255,255,.1);
+    color: white;
+}
+
+.btn-nav{
+    background: #2563eb;
+    border: none;
+    color: white;
+}
+
+.btn-nav:hover{
+    background: #1d4ed8;
+    color: white;
+}
