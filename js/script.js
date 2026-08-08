@@ -893,3 +893,47 @@ if (coursesModal) {
     });
 
 }
+// ===========================
+// BROWSE COURSES BUTTON
+// ===========================
+
+const browseCoursesBtn =
+    document.getElementById("browseCoursesBtn");
+
+if (browseCoursesBtn) {
+
+    browseCoursesBtn.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        // Close My Courses modal
+        const coursesModal =
+            document.getElementById("coursesModal");
+
+        if (coursesModal) {
+            coursesModal.style.display = "none";
+        }
+
+        // Close profile dropdown
+        const dropdown =
+            document.getElementById("profileDropdown");
+
+        if (dropdown) {
+            dropdown.style.display = "none";
+        }
+
+        // Scroll to Courses section
+        const coursesSection =
+            document.getElementById("courses");
+
+        if (coursesSection) {
+
+            coursesSection.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    });
+
+}
