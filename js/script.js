@@ -1014,3 +1014,40 @@ if (myCoursesList) {
     });
 
 }
+// ===========================
+// USER COURSE ENROLLMENT
+// ===========================
+
+function getEnrolledCourses() {
+
+    const user = window.auth.currentUser;
+
+    if (!user) {
+        return [];
+    }
+
+    const key = "enrolledCourses_" + user.uid;
+
+    return JSON.parse(
+        localStorage.getItem(key) || "[]"
+    );
+
+}
+
+
+function saveEnrolledCourses(courses) {
+
+    const user = window.auth.currentUser;
+
+    if (!user) {
+        return;
+    }
+
+    const key = "enrolledCourses_" + user.uid;
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(courses)
+    );
+
+}
