@@ -1697,3 +1697,62 @@ color:white;
 .user-menu {
     overflow: visible !important;
 }
+/* =========================================
+   FINAL PROFILE DROPDOWN POSITION
+   ========================================= */
+
+.user-menu {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.nav-actions {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+#profileDropdown {
+    display: none;
+
+    position: absolute !important;
+
+    top: calc(100% + 15px) !important;
+    right: 0 !important;
+    left: auto !important;
+
+    bottom: auto !important;
+
+    width: 300px !important;
+    max-width: 90vw !important;
+
+    margin: 0 !important;
+    transform: none !important;
+
+    z-index: 100000 !important;
+
+    background: #101010 !important;
+
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    border-radius: 18px !important;
+
+    padding: 20px !important;
+
+    box-sizing: border-box !important;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7) !important;
+}
+
+/* Keep dropdown contents inside the box */
+
+#profileDropdown img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+#profileDropdown h4 {
+    text-align: center;
+}
+
+#profileDropdown p {
+    text-align: center;
+}
