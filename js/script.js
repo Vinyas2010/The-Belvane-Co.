@@ -1240,3 +1240,26 @@ if (startLessonBtn) {
     });
 
 }
+// ===========================
+// LESSON COMPLETION
+// ===========================
+
+const completeLessonBtn =
+    document.getElementById("completeLessonBtn");
+
+if (completeLessonBtn) {
+
+    completeLessonBtn.addEventListener("click", () => {
+
+        completeLessonBtn.textContent =
+            "✓ Lesson Completed";
+
+        completeLessonBtn.disabled = true;
+
+        completeLessonBtn.style.opacity = "0.7";
+
+        alert("Lesson completed! 🎉");
+
+    });
+
+}
