@@ -765,3 +765,74 @@ document.addEventListener("click", (e) => {
 
 });
 console.log("END");
+// ===========================
+// PROFILE MODAL
+// ===========================
+
+const myProfileBtn = document.getElementById("myProfileBtn");
+const profileModal = document.getElementById("profileModal");
+const closeProfileModal = document.getElementById("closeProfileModal");
+
+const profileModalPhoto = document.getElementById("profileModalPhoto");
+const profileModalName = document.getElementById("profileModalName");
+const profileModalEmail = document.getElementById("profileModalEmail");
+
+
+// Open Profile Modal
+if (myProfileBtn && profileModal) {
+
+    myProfileBtn.addEventListener("click", () => {
+
+        const user = window.auth.currentUser;
+
+        if (user) {
+
+            if (profileModalPhoto) {
+                profileModalPhoto.src = user.photoURL || "";
+            }
+
+            if (profileModalName) {
+                profileModalName.textContent =
+                    user.displayName || "User";
+            }
+
+            if (profileModalEmail) {
+                profileModalEmail.textContent =
+                    user.email || "";
+            }
+
+        }
+
+        profileModal.style.display = "flex";
+
+    });
+
+}
+
+
+// Close Profile Modal
+if (closeProfileModal && profileModal) {
+
+    closeProfileModal.addEventListener("click", () => {
+
+        profileModal.style.display = "none";
+
+    });
+
+}
+
+
+// Close when clicking outside
+if (profileModal) {
+
+    profileModal.addEventListener("click", (e) => {
+
+        if (e.target === profileModal) {
+
+            profileModal.style.display = "none";
+
+        }
+
+    });
+
+}
