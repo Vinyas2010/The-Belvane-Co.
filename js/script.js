@@ -974,48 +974,7 @@ const availableCourses = [
     }
 
 ];
-// ===========================
-// DISPLAY AVAILABLE COURSES
-// ===========================
 
-const myCoursesList =
-    document.getElementById("myCoursesList");
-
-if (myCoursesList) {
-
-    myCoursesList.innerHTML = "";
-
-    availableCourses.forEach(course => {
-
-        const courseCard =
-            document.createElement("div");
-
-        courseCard.className = "my-course-card";
-
-        courseCard.innerHTML = `
-            <div class="my-course-icon">
-                ${course.icon}
-            </div>
-
-            <div class="my-course-details">
-
-                <h3>${course.title}</h3>
-
-                <p>${course.description}</p>
-
-                <button class="continue-course-btn"
-                        data-course="${course.id}">
-                    Start Course →
-                </button>
-
-            </div>
-        `;
-
-        myCoursesList.appendChild(courseCard);
-
-    });
-
-}
 // ===========================
 // USER COURSE ENROLLMENT
 // ===========================
@@ -1054,7 +1013,7 @@ function saveEnrolledCourses(courses) {
 
 }
 // ===========================
-// COURSE ENROLLMENT BUTTONS
+// COURSE BUTTONS
 // ===========================
 
 document.addEventListener("click", (e) => {
@@ -1074,22 +1033,37 @@ document.addEventListener("click", (e) => {
     const courseId =
         button.dataset.course;
 
+    const course =
+        availableCourses.find(
+            c => c.id === courseId
+        );
+
+    if (!course) return;
+
     const enrolledCourses =
         getEnrolledCourses();
 
-    if (!enrolledCourses.includes(courseId)) {
+    // Already enrolled
+    if (enrolledCourses.includes(courseId)) {
 
-        enrolledCourses.push(courseId);
+        alert(
+            "Opening " + course.title
+        );
 
-        saveEnrolledCourses(enrolledCourses);
-
-        alert("Course added to your account!");
-
-    } else {
-
-        alert("You are already enrolled in this course.");
-
+        return;
     }
+
+    // New enrollment
+    enrolledCourses.push(courseId);
+
+    saveEnrolledCourses(enrolledCourses);
+
+    alert(
+        course.title +
+        " has been added to your courses!"
+    );
+
+    displayMyCourses();
 
 });
 // ===========================
