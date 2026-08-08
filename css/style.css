@@ -1481,3 +1481,64 @@ color:white;
     color: white;
     font-size: 15px;
 }
+/* ===========================
+   MY COURSES MODAL
+   =========================== */
+
+.courses-modal h2 {
+    color: white;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.courses-subtitle {
+    color: #999;
+    margin-bottom: 25px;
+}
+
+.empty-courses {
+    padding: 25px 15px;
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.empty-icon {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.empty-courses h3 {
+    color: white;
+    margin: 8px 0;
+}
+
+.empty-courses p {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+#browseCoursesBtn {
+    display: inline-block;
+
+    padding: 11px 20px;
+
+    border-radius: 50px;
+
+    background: white;
+    color: black;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+#browseCoursesBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+}
