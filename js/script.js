@@ -1051,3 +1051,42 @@ function saveEnrolledCourses(courses) {
     );
 
 }
+// ===========================
+// COURSE ENROLLMENT BUTTONS
+// ===========================
+
+document.addEventListener("click", (e) => {
+
+    const button =
+        e.target.closest(".continue-course-btn");
+
+    if (!button) return;
+
+    const user = window.auth.currentUser;
+
+    if (!user) {
+        alert("Please sign in first.");
+        return;
+    }
+
+    const courseId =
+        button.dataset.course;
+
+    const enrolledCourses =
+        getEnrolledCourses();
+
+    if (!enrolledCourses.includes(courseId)) {
+
+        enrolledCourses.push(courseId);
+
+        saveEnrolledCourses(enrolledCourses);
+
+        alert("Course added to your account!");
+
+    } else {
+
+        alert("You are already enrolled in this course.");
+
+    }
+
+});
