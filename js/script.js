@@ -1224,3 +1224,19 @@ function displayMyCourses() {
     });
 
 }
+// ===========================
+// START LEARNING
+// ===========================
+
+const startLessonBtn =
+    document.getElementById("startLessonBtn");
+
+if (startLessonBtn) {
+
+    startLessonBtn.addEventListener("click", () => {
+
+        alert("Your first lesson is coming soon! 🚀");
+
+    });
+
+}
