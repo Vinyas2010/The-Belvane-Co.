@@ -972,3 +972,45 @@ const availableCourses = [
     }
 
 ];
+// ===========================
+// DISPLAY AVAILABLE COURSES
+// ===========================
+
+const myCoursesList =
+    document.getElementById("myCoursesList");
+
+if (myCoursesList) {
+
+    myCoursesList.innerHTML = "";
+
+    availableCourses.forEach(course => {
+
+        const courseCard =
+            document.createElement("div");
+
+        courseCard.className = "my-course-card";
+
+        courseCard.innerHTML = `
+            <div class="my-course-icon">
+                ${course.icon}
+            </div>
+
+            <div class="my-course-details">
+
+                <h3>${course.title}</h3>
+
+                <p>${course.description}</p>
+
+                <button class="continue-course-btn"
+                        data-course="${course.id}">
+                    Start Course →
+                </button>
+
+            </div>
+        `;
+
+        myCoursesList.appendChild(courseCard);
+
+    });
+
+}
