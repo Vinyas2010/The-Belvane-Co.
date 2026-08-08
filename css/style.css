@@ -1389,8 +1389,10 @@ color:white;
 
 .profile-modal {
     display: none;
+
     position: fixed;
     inset: 0;
+
     z-index: 10000;
 
     background: rgba(0, 0, 0, 0.75);
@@ -1398,6 +1400,9 @@ color:white;
 
     align-items: center;
     justify-content: center;
+
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .profile-modal-content {
@@ -1405,6 +1410,7 @@ color:white;
 
     width: 380px;
     max-width: 90%;
+    max-height: 80vh;
 
     padding: 35px;
 
@@ -1415,21 +1421,38 @@ color:white;
     text-align: center;
 
     box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
-}
 
+    overflow-y: auto;
+}
 .profile-close {
     position: absolute;
 
-    top: 15px;
-    right: 18px;
+    top: 12px;
+    right: 14px;
+
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border: none;
-    background: transparent;
+    border-radius: 50%;
 
+    background: transparent;
     color: white;
+
     font-size: 28px;
+    line-height: 1;
 
     cursor: pointer;
+
+    z-index: 10001;
+}
+
+.profile-close:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 #profileModalPhoto {
