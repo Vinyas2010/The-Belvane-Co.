@@ -854,6 +854,8 @@ if (myCoursesBtn && coursesModal) {
 
         coursesModal.style.display = "flex";
 
+        displayMyCourses();
+
         // Close profile dropdown
         const dropdown =
             document.getElementById("profileDropdown");
@@ -1090,3 +1092,101 @@ document.addEventListener("click", (e) => {
     }
 
 });
+// ===========================
+// SHOW ENROLLED COURSES ONLY
+// ===========================
+
+function displayMyCourses() {
+
+    const myCoursesList =
+        document.getElementById("myCoursesList");
+
+    if (!myCoursesList) return;
+
+    const user = window.auth.currentUser;
+
+    if (!user) {
+
+        myCoursesList.innerHTML = `
+            <div class="empty-courses">
+                <div class="empty-icon">🔐</div>
+
+                <h3>Please sign in</h3>
+
+                <p>
+                    Sign in to see your courses.
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
+    const enrolledIds =
+        getEnrolledCourses();
+
+    myCoursesList.innerHTML = "";
+
+    if (enrolledIds.length === 0) {
+
+        myCoursesList.innerHTML = `
+            <div class="empty-courses">
+
+                <div class="empty-icon">📖</div>
+
+                <h3>No courses yet</h3>
+
+                <p>
+                    You haven't enrolled in any courses yet.
+                </p>
+
+                <a href="#courses" id="browseCoursesBtn">
+                    Browse Courses →
+                </a>
+
+            </div>
+        `;
+
+        return;
+    }
+
+    enrolledIds.forEach(courseId => {
+
+        const course =
+            availableCourses.find(
+                c => c.id === courseId
+            );
+
+        if (!course) return;
+
+        const courseCard =
+            document.createElement("div");
+
+        courseCard.className =
+            "my-course-card";
+
+        courseCard.innerHTML = `
+            <div class="my-course-icon">
+                ${course.icon}
+            </div>
+
+            <div class="my-course-details">
+
+                <h3>${course.title}</h3>
+
+                <p>${course.description}</p>
+
+                <button
+                    class="continue-course-btn"
+                    data-course="${course.id}">
+                    Continue Course →
+                </button>
+
+            </div>
+        `;
+
+        myCoursesList.appendChild(courseCard);
+
+    });
+
+}
