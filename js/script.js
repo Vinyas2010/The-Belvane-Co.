@@ -1043,27 +1043,87 @@ document.addEventListener("click", (e) => {
     const enrolledCourses =
         getEnrolledCourses();
 
-    // Already enrolled
-    if (enrolledCourses.includes(courseId)) {
+    // ===========================
+    // NOT ENROLLED
+    // ===========================
+
+    if (!enrolledCourses.includes(courseId)) {
+
+        enrolledCourses.push(courseId);
+
+        saveEnrolledCourses(enrolledCourses);
 
         alert(
-            "Opening " + course.title
+            course.title +
+            " has been added to your courses!"
         );
+
+        displayMyCourses();
 
         return;
     }
 
-    // New enrollment
-    enrolledCourses.push(courseId);
+    // ===========================
+    // OPEN COURSE
+    // ===========================
 
-    saveEnrolledCourses(enrolledCourses);
+    const courseLearningModal =
+        document.getElementById(
+            "courseLearningModal"
+        );
 
-    alert(
-        course.title +
-        " has been added to your courses!"
-    );
+    const learningCourseIcon =
+        document.getElementById(
+            "learningCourseIcon"
+        );
 
-    displayMyCourses();
+    const learningCourseTitle =
+        document.getElementById(
+            "learningCourseTitle"
+        );
+
+    const learningCourseDescription =
+        document.getElementById(
+            "learningCourseDescription"
+        );
+
+    const coursesModal =
+        document.getElementById(
+            "coursesModal"
+        );
+
+    const dropdown =
+        document.getElementById(
+            "profileDropdown"
+        );
+
+    if (coursesModal) {
+        coursesModal.style.display = "none";
+    }
+
+    if (dropdown) {
+        dropdown.style.display = "none";
+    }
+
+    if (learningCourseIcon) {
+        learningCourseIcon.textContent =
+            course.icon;
+    }
+
+    if (learningCourseTitle) {
+        learningCourseTitle.textContent =
+            course.title;
+    }
+
+    if (learningCourseDescription) {
+        learningCourseDescription.textContent =
+            course.description;
+    }
+
+    if (courseLearningModal) {
+        courseLearningModal.style.display =
+            "flex";
+    }
 
 });
 // ===========================
