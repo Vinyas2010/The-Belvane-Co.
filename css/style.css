@@ -1656,3 +1656,44 @@ color:white;
 #coursesModal .courses-close:hover {
     background: rgba(255, 255, 255, 0.12) !important;
 }
+/* =================================
+   PROFILE DROPDOWN - POSITION FIX
+   ================================= */
+
+.user-menu {
+    position: relative !important;
+}
+
+#profileDropdown {
+    position: absolute !important;
+
+    top: calc(100% + 12px) !important;
+    right: 0 !important;
+
+    left: auto !important;
+    bottom: auto !important;
+
+    width: 300px !important;
+    max-width: 90vw !important;
+
+    margin: 0 !important;
+
+    transform: none !important;
+
+    z-index: 100000 !important;
+
+    background: #101010 !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 18px !important;
+
+    padding: 20px !important;
+
+    box-sizing: border-box !important;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6) !important;
+}
+.nav-actions,
+.user-menu {
+    overflow: visible !important;
+}
