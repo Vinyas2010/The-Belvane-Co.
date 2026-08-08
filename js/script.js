@@ -937,3 +937,38 @@ if (browseCoursesBtn) {
     });
 
 }
+// ===========================
+// COURSE DATA
+// ===========================
+
+const availableCourses = [
+
+    {
+        id: "chatgpt-masterclass",
+        title: "ChatGPT Masterclass",
+        description: "Learn how to use ChatGPT effectively for study, work and productivity.",
+        icon: "🤖"
+    },
+
+    {
+        id: "prompt-engineering",
+        title: "Prompt Engineering",
+        description: "Learn how to write powerful prompts and get better results from AI.",
+        icon: "🧠"
+    },
+
+    {
+        id: "ai-automation",
+        title: "AI Automation",
+        description: "Discover how AI can automate repetitive tasks and workflows.",
+        icon: "⚡"
+    },
+
+    {
+        id: "ai-image-generation",
+        title: "AI Image Generation",
+        description: "Learn the fundamentals of creating images with AI tools.",
+        icon: "🎨"
+    }
+
+];
