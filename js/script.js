@@ -836,3 +836,60 @@ if (profileModal) {
     });
 
 }
+// ===========================
+// MY COURSES MODAL
+// ===========================
+
+const myCoursesBtn = document.getElementById("myCoursesBtn");
+const coursesModal = document.getElementById("coursesModal");
+const closeCoursesModal = document.getElementById("closeCoursesModal");
+
+
+// Open My Courses
+if (myCoursesBtn && coursesModal) {
+
+    myCoursesBtn.addEventListener("click", (e) => {
+
+        e.stopPropagation();
+
+        coursesModal.style.display = "flex";
+
+        // Close profile dropdown
+        const dropdown =
+            document.getElementById("profileDropdown");
+
+        if (dropdown) {
+            dropdown.style.display = "none";
+        }
+
+    });
+
+}
+
+
+// Close My Courses
+if (closeCoursesModal && coursesModal) {
+
+    closeCoursesModal.addEventListener("click", () => {
+
+        coursesModal.style.display = "none";
+
+    });
+
+}
+
+
+// Close when clicking outside
+if (coursesModal) {
+
+    coursesModal.addEventListener("click", (e) => {
+
+        if (e.target === coursesModal) {
+
+            coursesModal.style.display = "none";
+
+        }
+
+    });
+
+}
