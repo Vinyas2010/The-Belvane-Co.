@@ -2009,3 +2009,85 @@ color:white;
     }
 
 }
+/* ===========================
+   LESSON INTERFACE
+   =========================== */
+
+.lesson-badge {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    margin-bottom: 12px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    letter-spacing: 1px;
+}
+
+.lesson-video {
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    margin: 25px 0;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+    background: #050505;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lesson-video-placeholder {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 50px;
+
+    color: white;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,0.12),
+            #050505 65%
+        );
+}
+
+.lesson-text {
+    margin: 25px 0;
+}
+
+.lesson-text h4 {
+    margin-bottom: 12px;
+
+    font-size: 18px;
+}
+
+.lesson-text ul {
+    padding-left: 22px;
+
+    color: #aaa;
+
+    line-height: 1.8;
+}
+
+#completeLessonBtn {
+    margin-top: 10px;
+}
