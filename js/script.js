@@ -1481,3 +1481,49 @@ if (lessonVideo && lessonVideoSource) {
     }
 
 }
+// ===========================
+// COURSE ENROLLMENT
+// ===========================
+
+document.addEventListener("click", (e) => {
+
+    const enrollButton =
+        e.target.closest(".enroll-course-btn");
+
+    if (!enrollButton) return;
+
+    const user =
+        window.auth.currentUser;
+
+    if (!user) {
+
+        alert("Please sign in first.");
+
+        return;
+    }
+
+    const courseId =
+        enrollButton.dataset.course;
+
+    const enrolledCourses =
+        getEnrolledCourses();
+
+    if (!enrolledCourses.includes(courseId)) {
+
+        enrolledCourses.push(courseId);
+
+        saveEnrolledCourses(enrolledCourses);
+
+        alert(
+            "ChatGPT Mastery has been added to My Courses! 🎉"
+        );
+
+    } else {
+
+        alert(
+            "You are already enrolled in this course."
+        );
+
+    }
+
+});
