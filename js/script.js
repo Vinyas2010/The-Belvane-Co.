@@ -943,38 +943,85 @@ if (browseCoursesBtn) {
 // COURSE DATA
 // ===========================
 
+// ===========================
+// COURSE DATA
+// ===========================
+
 const availableCourses = [
 
     {
         id: "chatgpt-masterclass",
         title: "ChatGPT Masterclass",
-        description: "Learn how to use ChatGPT effectively for study, work and productivity.",
-        icon: "🤖"
+        description:
+            "Learn how to use ChatGPT effectively for study, work and productivity.",
+        icon: "🤖",
+
+        lessons: [
+            {
+                id: "chatgpt-lesson-1",
+                title: "Introduction to ChatGPT",
+                description:
+                    "Learn the basics of ChatGPT and how it works.",
+                video: ""
+            }
+        ]
     },
 
     {
         id: "prompt-engineering",
         title: "Prompt Engineering",
-        description: "Learn how to write powerful prompts and get better results from AI.",
-        icon: "🧠"
+        description:
+            "Learn how to write powerful prompts and get better results from AI.",
+        icon: "🧠",
+
+        lessons: [
+            {
+                id: "prompt-lesson-1",
+                title: "Introduction to Prompt Engineering",
+                description:
+                    "Learn what prompts are and how to write effective ones.",
+                video: ""
+            }
+        ]
     },
 
     {
         id: "ai-automation",
         title: "AI Automation",
-        description: "Discover how AI can automate repetitive tasks and workflows.",
-        icon: "⚡"
+        description:
+            "Discover how AI can automate repetitive tasks and workflows.",
+        icon: "⚡",
+
+        lessons: [
+            {
+                id: "automation-lesson-1",
+                title: "Introduction to AI Automation",
+                description:
+                    "Learn the fundamentals of AI-powered automation.",
+                video: ""
+            }
+        ]
     },
 
     {
         id: "ai-image-generation",
         title: "AI Image Generation",
-        description: "Learn the fundamentals of creating images with AI tools.",
-        icon: "🎨"
+        description:
+            "Learn the fundamentals of creating images with AI tools.",
+        icon: "🎨",
+
+        lessons: [
+            {
+                id: "image-lesson-1",
+                title: "Introduction to AI Image Generation",
+                description:
+                    "Learn how AI image generation works.",
+                video: ""
+            }
+        ]
     }
 
 ];
-
 // ===========================
 // USER COURSE ENROLLMENT
 // ===========================
