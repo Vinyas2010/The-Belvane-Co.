@@ -1353,3 +1353,45 @@ if (completeLessonBtn) {
     );
 
 }
+// ===========================
+// COURSE PROGRESS
+// ===========================
+
+const courseProgressText =
+    document.getElementById("courseProgressText");
+
+const courseProgressFill =
+    document.getElementById("courseProgressFill");
+
+
+function updateCourseProgress() {
+
+    if (
+        !courseProgressText ||
+        !courseProgressFill
+    ) {
+        return;
+    }
+
+    const completedLessons =
+        getCompletedLessons();
+
+    const totalLessons = 1;
+
+    const completedCount =
+        completedLessons.length;
+
+    const percentage =
+        Math.round(
+            (completedCount / totalLessons) * 100
+        );
+
+    courseProgressText.textContent =
+        percentage + "%";
+
+    courseProgressFill.style.width =
+        percentage + "%";
+}
+
+
+updateCourseProgress();
