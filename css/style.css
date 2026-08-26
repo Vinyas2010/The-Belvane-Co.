@@ -2091,3 +2091,47 @@ color:white;
 #completeLessonBtn {
     margin-top: 10px;
 }
+/* ===========================
+   COURSE PROGRESS
+   =========================== */
+
+.course-progress-container {
+    margin-bottom: 30px;
+}
+
+.course-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+}
+
+#courseProgressText {
+    color: #aaa;
+}
+
+.course-progress-bar {
+    width: 100%;
+    height: 8px;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border-radius: 20px;
+}
+
+.course-progress-fill {
+    width: 0%;
+
+    height: 100%;
+
+    background: white;
+
+    border-radius: 20px;
+
+    transition: width 0.4s ease;
+}
