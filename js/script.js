@@ -1205,7 +1205,7 @@ function displayMyCourses() {
 
     const enrolledIds =
         getEnrolledCourses();
-
+console.log("Enrolled courses:", enrolledIds);
     myCoursesList.innerHTML = "";
 
     if (enrolledIds.length === 0) {
