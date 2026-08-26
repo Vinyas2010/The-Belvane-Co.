@@ -1241,25 +1241,115 @@ if (startLessonBtn) {
 
 }
 // ===========================
-// LESSON COMPLETION
+// LESSON PROGRESS
 // ===========================
 
 const completeLessonBtn =
     document.getElementById("completeLessonBtn");
 
-if (completeLessonBtn) {
+function getCompletedLessons() {
 
-    completeLessonBtn.addEventListener("click", () => {
+    const user = window.auth.currentUser;
+
+    if (!user) {
+        return [];
+    }
+
+    const key =
+        "completedLessons_" + user.uid;
+
+    return JSON.parse(
+        localStorage.getItem(key) || "[]"
+    );
+
+}
+
+
+function saveCompletedLessons(lessons) {
+
+    const user = window.auth.currentUser;
+
+    if (!user) {
+        return;
+    }
+
+    const key =
+        "completedLessons_" + user.uid;
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(lessons)
+    );
+
+}
+
+
+function updateLessonButton() {
+
+    if (!completeLessonBtn) return;
+
+    const completedLessons =
+        getCompletedLessons();
+
+    if (completedLessons.includes("lesson-1")) {
 
         completeLessonBtn.textContent =
             "✓ Lesson Completed";
 
         completeLessonBtn.disabled = true;
 
-        completeLessonBtn.style.opacity = "0.7";
+        completeLessonBtn.style.opacity =
+            "0.7";
 
-        alert("Lesson completed! 🎉");
+    }
 
-    });
+}
+
+
+if (completeLessonBtn) {
+
+    completeLessonBtn.addEventListener(
+        "click",
+        () => {
+
+            const user =
+                window.auth.currentUser;
+
+            if (!user) {
+
+                alert(
+                    "Please sign in first."
+                );
+
+                return;
+            }
+
+            const completedLessons =
+                getCompletedLessons();
+
+            if (
+                !completedLessons.includes(
+                    "lesson-1"
+                )
+            ) {
+
+                completedLessons.push(
+                    "lesson-1"
+                );
+
+                saveCompletedLessons(
+                    completedLessons
+                );
+
+            }
+
+            updateLessonButton();
+
+            alert(
+                "Lesson completed! 🎉"
+            );
+
+        }
+    );
 
 }
