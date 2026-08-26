@@ -962,7 +962,7 @@ const availableCourses = [
                 title: "Introduction to ChatGPT",
                 description:
                     "Learn the basics of ChatGPT and how it works.",
-                video: ""
+               video: "videos/ChatGPT MasteryFinal.mp4"
             }
         ]
     },
