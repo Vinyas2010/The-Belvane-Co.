@@ -1442,3 +1442,42 @@ function updateCourseProgress() {
 
 
 updateCourseProgress();
+// ===========================
+// LOAD COURSE VIDEO
+// ===========================
+
+const lessonVideo =
+    document.getElementById("lessonVideo");
+
+const lessonVideoSource =
+    document.getElementById("lessonVideoSource");
+
+if (lessonVideo && lessonVideoSource) {
+
+    const chatGPTCourse =
+        availableCourses.find(
+            course =>
+                course.id === "chatgpt-masterclass"
+        );
+
+    if (
+        chatGPTCourse &&
+        chatGPTCourse.lessons &&
+        chatGPTCourse.lessons.length > 0
+    ) {
+
+        const lesson =
+            chatGPTCourse.lessons[0];
+
+        if (lesson.video) {
+
+            lessonVideoSource.src =
+                lesson.video;
+
+            lessonVideo.load();
+
+        }
+
+    }
+
+}
